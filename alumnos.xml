@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml>
+    <alumnos>
+        <alumno>
+            <Id>1</Id>
+            <Nombre>Morad</Nombre>
+            <Edad>26</Edad>
+        </alumno>
+        <alumno>
+            <Id>2</Id>
+            <Nombre>Paul</Nombre>
+            <Edad>25</Edad>
+        </alumno>
+        <alumno>
+            <Id>3</Id>
+            <Nombre>Juanma</Nombre>
+            <Edad>20</Edad>
+        </alumno>
+    </alumnos>
+</xml>
