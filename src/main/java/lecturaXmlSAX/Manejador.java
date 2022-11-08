@@ -48,7 +48,7 @@ public class Manejador extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 
         switch (qName) {
-            case "Alumno":
+            case "alumno":
                 alumno = new Alumno();
                 listaAlumnos.add(alumno);
                 //si queremos poner el id
@@ -59,9 +59,7 @@ public class Manejador extends DefaultHandler {
             case "Id":
                 
             case "Nombre":
-                
-                
-                
+              
                 
             case "Edad":
                 
