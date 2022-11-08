@@ -4,17 +4,20 @@
  */
 package lecturaXmlSAX;
 
+import creacionXmlDOM.Alumno;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 
 /**
  *
@@ -23,32 +26,30 @@ import org.xml.sax.SAXException;
 public class Principal {
 
     public static void main(String[] args) {
-
-        File f = new File("alumnos.xml");
         try {
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document document = db.parse(f);
-//importar con org
-            NodeList alumnos = document.getElementsByTagName("alumno");
-            Node nodoAlumno;
-            Element nodoDatos;
+            SAXParserFactory spf = SAXParserFactory.newInstance();
+            SAXParser sp = spf.newSAXParser();
+
+            Manejador m = new Manejador();
+            File f = new File("alumnos.xml");
+           
+            sp.parse(f, m);
+
+            ArrayList<Alumno> lista = m.obtnerLista();
             
-            for (int i = 0; i < alumnos.getLength(); i++) {
-                nodoAlumno = alumnos.item(i);
-                nodoDatos =(Element) nodoAlumno;
-                //imprimir los valores
-                System.out.println("Id: "+ nodoDatos.getElementsByTagName("Id").item(0).getTextContent());
-                System.out.println("Nombre: "+ nodoDatos.getElementsByTagName("Nombre").item(0).getTextContent());
-                System.out.println("Edad: "+ nodoDatos.getElementsByTagName("Edad").item(0).getTextContent());
+            for (Alumno alumno : lista) {
+                
+                System.out.println(alumno.toString());
             }
             
-        } catch (ParserConfigurationException e) {
+            
+        } catch (IOException e) {
             System.out.println(e.getMessage());
+        } catch (ParserConfigurationException p) {
+            System.out.println(p.getMessage());
         } catch (SAXException s) {
             System.out.println(s.getMessage());
-        }catch (IOException io) {
-            System.out.println(io.getMessage());
-        } 
+        }
     }
+
 }

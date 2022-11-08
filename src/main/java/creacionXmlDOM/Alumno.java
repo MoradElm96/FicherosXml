@@ -13,6 +13,12 @@ public class Alumno {
     int id;
     String nombre;
     int edad;
+    
+    //constructor vacio para lectura con sax
+    public Alumno() {
+    }
+    
+    
 
     public Alumno(int id, String nombre, int edad) {
         this.id = id;
